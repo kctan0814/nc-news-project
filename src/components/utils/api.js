@@ -15,3 +15,10 @@ export const getArticleById = id => {
       return data;
     })
 }
+
+export const getCommentsById = id => {
+  return api.get(`articles/${id}/comments`)
+    .then(({data}) => {
+      return data;
+    })
+}

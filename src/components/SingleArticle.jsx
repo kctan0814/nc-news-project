@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById } from './utils/api';
+import CommentList from './CommentList';
 
 const SingleArticle = () => {
   const { article_id } = useParams()
@@ -12,11 +13,12 @@ const SingleArticle = () => {
       .then(({article}) => {
         setArticle(article)
         setIsLoading(false)
+        console.log(article)
       })
   }, [])
 
   if (isLoading) {
-    return <p className='loading'>Loading page..</p>
+    return <p className='loading'>Loading article..</p>
   }
 
   return (
@@ -36,6 +38,7 @@ const SingleArticle = () => {
         </main>
         <p className="footer right smaller gray">{article.votes} Votes</p>
       </article>
+      <CommentList article_id={article_id} />
     </body>
   )
 }

@@ -17,7 +17,7 @@ const ArticlesList = () => {
   return (
     <section className="articles-list">
       <h2>Now trending</h2>
-      {isLoading ? <p className="loading">Loading page...</p> : articles.map(article => {
+      {isLoading ? <p className="loading">Loading articles...</p> : articles.map(article => {
         return <ArticleCard 
         key={article.article_id} 
         article_id={article.article_id}
