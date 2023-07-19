@@ -1,9 +1,9 @@
 import './App.css'
 import Header from './components/Header'
 import NavBar from './components/NavBar'
-import ArticlesList from './components/ArticlesList'
+import ArticlesList from './components/Articles/ArticlesList'
 import {Routes, Route} from 'react-router-dom'
-import SingleArticle from './components/SingleArticle'
+import SingleArticle from './components/Article/SingleArticle'
 import Error from './components/Error'
 
 function App() {

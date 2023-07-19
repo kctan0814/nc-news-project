@@ -29,6 +29,12 @@ html {
   margin: 0;
 }
 
+.no-style {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
 .header {
   margin: 0 auto;
   width: fit-content;
@@ -367,9 +373,51 @@ nav li:last-child p {
 }
 
 .single-article .footer{
+  display: flex;
+  justify-content: end;
   border-top: 1px solid gray;
   padding-top: 1rem;
   margin: 1rem 0 0 0;
+}
+
+.single-article .footer p {
+  margin-left: 1rem;
+}
+
+.footer button {
+  color: gray;
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.downvote {
+  transform: rotate(180deg);
+  transition: color 0.25s;
+}
+
+.downvote:hover {
+  color: darkblue
+}
+
+.downvote:disabled {
+  color: darkblue
+}
+
+.upvote {
+  transition: color 0.5s;
+}
+
+.upvote:hover {
+  color: rgb(255, 157, 0)
+}
+
+.upvote:disabled {
+  color: rgb(255, 157, 0);
+}
+
+.footer .err-msg {
+  margin: 0 1rem 0 0;
+  align-self: center;
 }
 
 .comment-section {
