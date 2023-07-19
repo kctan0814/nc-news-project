@@ -25,7 +25,4 @@ export const getCommentsById = id => {
 
 export const patchArticle = (id, body) => {
   return api.patch(`/articles/${id}`, body)
-  .then(({data}) => {
-    console.log(data)
-  })
 }
