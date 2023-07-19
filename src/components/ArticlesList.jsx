@@ -10,7 +10,7 @@ const ArticlesList = () => {
   useEffect(() => {
     getArticles().then(({articles}) => {
       setArticles(articles)
-      setIsLoading(false)
+      setIsLoading(false);
     })
   }, [])
 
@@ -20,6 +20,7 @@ const ArticlesList = () => {
       {isLoading ? <p className="loading">Loading page...</p> : articles.map(article => {
         return <ArticleCard 
         key={article.article_id} 
+        article_id={article.article_id}
         article_img_url={article.article_img_url}
         author={article.author}
         comment_count={article.comment_count}

@@ -8,3 +8,10 @@ export const getArticles = () => {
       return data;
     })
 }
+
+export const getArticleById = id => {
+  return api.get(`/articles/${id}`)
+    .then(({data}) => {
+      return data;
+    })
+}
