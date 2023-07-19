@@ -65,20 +65,42 @@ nav ul {
   height: 3rem;
 }
 
-nav ul li:first-child {
+nav li:first-child {
   font-weight: 700;
+  background-color: rgb(190, 190, 190);
 }
 
-nav ul * {
+nav li {
   flex-grow: 1;
-  text-align: center;
-  place-self: center;
   font-weight: 600;
-  border-right: 1px solid black;
   font-size: 0.85rem;
+  height: 100%;
 }
 
-nav ul li:last-child {
+nav a {
+  height: 100%;
+  display: block;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+nav p {
+  text-align: center;
+  margin: 0;
+  position: relative;
+  top: 0.9rem;
+}
+
+nav li:first-child a:hover {
+  background-color: rgb(179, 179, 179);
+}
+
+nav a:hover {
+  text-decoration: underline;
+  background-color: rgb(209, 209, 209);
+}
+
+nav li:last-child p {
   border-right: none;
 }
 
@@ -101,7 +123,7 @@ nav ul li:last-child {
   grid-area: 2 / 1 / 4 / 2 ;
 }
 
-.articles-list > a:nth-of-type(1) > div {
+.articles-list > a:nth-of-type(1) {
   display: grid;
   grid-template: min-content min-content auto / auto auto;
 }

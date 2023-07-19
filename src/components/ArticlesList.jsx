@@ -19,7 +19,7 @@ const ArticlesList = () => {
     <section className="articles-list">
       <h2>Now trending</h2>
       {isLoading ? <p className="loading">Loading articles...</p> : articles.map(article => {
-        return <Link className="no-decoration" to={`/articles/${article.article_id}`} >
+        return (
           <ArticleCard 
           key={article.article_id} 
           article_id={article.article_id}
@@ -30,7 +30,7 @@ const ArticlesList = () => {
           title={article.title}
           topic={article.topic}
           />
-        </Link>
+        )
       })}
     </section>
   )

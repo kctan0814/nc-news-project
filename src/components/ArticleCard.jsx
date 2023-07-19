@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const ArticleCard = props => {
   const {article_id, article_img_url, author, comment_count, created_at, title, topic} = props;
   return (
-    <div className="article-card">
+    <Link className="no-decoration article-card" to={`/articles/${article_id}`} >
       <main className="article-main">
         <header className="article-header">
           <div className="names">
@@ -20,7 +20,7 @@ const ArticleCard = props => {
         </footer>
       </main>
       <img src={article_img_url} alt="article image" />
-    </div>
+    </Link>
   )
 }
 
