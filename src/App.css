@@ -18,6 +18,17 @@ html {
   padding: 2rem;
 }
 
+.error {
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.error * {
+  margin: 0;
+}
+
 .header {
   margin: 0 auto;
   width: fit-content;

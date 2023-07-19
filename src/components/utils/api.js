@@ -10,14 +10,14 @@ export const getArticles = () => {
 }
 
 export const getArticleById = id => {
-  return api.get(`/articles/${id}`)
+  return api.get(`/articles/11${id}`)
     .then(({data}) => {
       return data;
     })
 }
 
 export const getCommentsById = id => {
-  return api.get(`articles/${id}/comments`)
+  return api.get(`articles/${id}/comment`)
     .then(({data}) => {
       return data;
     })

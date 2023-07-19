@@ -5,7 +5,8 @@ import CommentCard from "./CommentCard";
 const CommentList = props => {
   const { article_id } = props;
   const [comments, setComments] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     getCommentsById(article_id)
@@ -13,13 +14,17 @@ const CommentList = props => {
         setComments(comments)
         setIsLoading(false)
       })
+      .catch(() => {
+        setIsError(true);
+      })
   })
 
   return (
     <section className="comment-section">
       <h2>{comments.length} Comments</h2>
-      {isLoading ? <p className="loading">Loading comments...</p> : 
-      comments.map(comment => {
+      {isError ? <h3>Error occured: Cannot load the comments at the moment</h3> : 
+      isLoading ? <p className="loading">Loading comments...</p> : 
+      comments.length === 0 ? <h3>No comments yet...</h3> : comments.map(comment => {
         return <CommentCard
           key={comment.comment_id}
           author={comment.author}
