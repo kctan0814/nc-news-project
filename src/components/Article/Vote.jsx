@@ -8,40 +8,68 @@ const Vote = props => {
   const [isError, setIsError] = useState(false)
 
   const upvote = e => {
-    setUpvotePress(true)
-    setDownvotePress(false)
-    setAddVote(1)
-    patchArticle(article_id, { inc_votes: 1})
-    .then(() => {
-      setIsError(false)
-    })
-    .catch(() => {
+    if (!upvotePress) {
+      setUpvotePress(true)
+      setDownvotePress(false)
+      setAddVote(1)
+      patchArticle(article_id, { inc_votes: 1})
+      .then(() => {
+        setIsError(false)
+      })
+      .catch(() => {
+        setUpvotePress(false)
+        setAddVote(0)
+        setIsError(true)
+      })
+    } else {
       setUpvotePress(false)
       setAddVote(0)
-      setIsError(true)
-    })
+      patchArticle(article_id, { inc_votes: -1})
+      .then(() => {
+        setIsError(false)
+      })
+      .catch(() => {
+        setUpvotePress(true)
+        setAddVote(1)
+        setIsError(true)
+      })
+    }
   }
 
   const downvote = e => {
-    setDownvotePress(true)
-    setUpvotePress(false)
-    setAddVote(-1)
-    patchArticle(article_id, { inc_votes: -1})
-    .then(() => {
-      setIsError(false)
-    })
-    .catch(() => {
+    if (!downvotePress) {
+      setDownvotePress(true)
+      setUpvotePress(false)
+      setAddVote(-1)
+      patchArticle(article_id, { inc_votes: -1})
+      .then(() => {
+        setIsError(false)
+      })
+      .catch(() => {
+        setDownvotePress(false)
+        setAddVote(0)
+        setIsError(true)
+      })
+    } else {
       setDownvotePress(false)
       setAddVote(0)
-      setIsError(true)
-    })
+      patchArticle(article_id, { inc_votes: 1})
+      .then(() => {
+        setIsError(false)
+      })
+      .catch(() => {
+        setDownvotePress(true)
+        setAddVote(-1)
+        setIsError(true)
+      })
+    }
   }
 
   return (
     <>
       {isError && <p className="err-msg">Error: Vote button currently not working</p>}
-      <button disabled={upvotePress} onClick={upvote} className='no-style upvote'>⇧</button>
-      <button disabled={downvotePress} onClick={downvote} className='no-style downvote'>⇧</button>
+      <button onClick={upvote} className={`no-style upvote ${upvotePress && 'pressedUp'}`}>⇧</button>
+      <button onClick={downvote} className={`no-style downvote ${downvotePress && 'pressedDown'}`}>⇧</button>
     </>
   )
 }

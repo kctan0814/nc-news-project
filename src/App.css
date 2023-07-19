@@ -399,8 +399,8 @@ nav li:last-child p {
   color: darkblue
 }
 
-.downvote:disabled {
-  color: darkblue
+.pressedDown {
+  color: darkblue !important
 }
 
 .upvote {
@@ -411,8 +411,8 @@ nav li:last-child p {
   color: rgb(255, 157, 0)
 }
 
-.upvote:disabled {
-  color: rgb(255, 157, 0);
+.pressedUp {
+  color: rgb(255, 157, 0) !important;
 }
 
 .footer .err-msg {
