@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom'
+ 
 const NavBar = props => {
   return (
     <nav>
       <ul>
-        <li>Home</li>
-        <li>Topic 1</li>
-        <li>Topic 2</li>
-        <li>Topic 3</li>
-        <li>Topic 4</li>
+        <li><Link className='no-decoration' to='/' ><p>Home</p></Link></li>
+        <li><Link className='no-decoration' to='/' ><p>Topic 1</p></Link></li>
+        <li><Link className='no-decoration' to='/' ><p>Topic 2</p></Link></li>
+        <li><Link className='no-decoration' to='/' ><p>Topic 3</p></Link></li>
+        <li><Link className='no-decoration' to='/' ><p>Topic 4</p></Link></li>
       </ul>
     </nav>
   )
