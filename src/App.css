@@ -490,6 +490,11 @@ nav li:last-child p {
   visibility: visible !important;
 }
 
+.add-comment p {
+  margin: 0;
+  align-self: center;
+}
+
 .add-comment button {
   width: 8rem;
   padding: 0.7rem;

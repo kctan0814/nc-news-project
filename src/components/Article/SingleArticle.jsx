@@ -31,7 +31,7 @@ const SingleArticle = () => {
     return <p className='loading'>Loading article..</p>
   } else {
     return (
-      <body>
+      <>
         <article className="single-article">
           <header>
             <h2>{article.title}</h2>
@@ -51,7 +51,7 @@ const SingleArticle = () => {
           </footer>
         </article>
         <CommentList article_id={article_id} />
-      </body>
+      </>
     )
   }
 

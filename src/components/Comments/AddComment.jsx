@@ -8,17 +8,24 @@ const AddComment = props => {
   const [isError, setIsError] = useState(false);
   const [isTooLong, setIsTooLong] = useState(false)
   const [isSuccessful, setIsSuccessful] = useState(false)
+  const [isEmpty, setIsEmpty] = useState(true)
   const [comment, setComment] = useState('')
+  const [message, setMessage] = useState("")
   const maxChar = 300;
-  let message = <p></p>
 
   const handleSubmit = e => {
     e.preventDefault()
+    if (isEmpty) {
+      setMessage("Can't post an empty comment :(")
+      setIsEmpty(true)
+      return
+    }
     const toSend = {username, body: comment}
     postComment(article_id, toSend)
       .then(({comment}) => { 
         setIsSuccessful(true)
         setComment('')
+        setIsEmpty(true)
         setIsError(false)
         setComments(c => {
           return [comment, ...c]
@@ -30,27 +37,34 @@ const AddComment = props => {
   }
 
   const commentChange = e => {
+    e.target.value.length ? setIsEmpty(false) : setIsEmpty(true)
+    setMessage('')
+    setIsError(false)
+    setIsSuccessful(false)
+    e.target.value.length > maxChar ? setIsTooLong(true) : setIsTooLong(false);
     setComment(() => {
-      setIsError(false)
-      setIsSuccessful(false)
-      e.target.value.length > maxChar ? setIsTooLong(true) : setIsTooLong(false);
       return e.target.value
     })
   }
 
   if (isError) {
-    message = <p>Error occured: Please try again later.</p>
-  } else if (isTooLong) {
-    message = <p>Oops! That's too many characters :(</p>
-  } else if (isSuccessful) {
-    message = <p>Comment added successfully!</p>
+    setMessage("Error occured: Please try again later.")
+    setIsError(false)
+  } 
+  else if (isTooLong) {
+    setMessage("Oops! That's too many characters :(")
+    setIsTooLong(false)
+  } 
+  else if (isSuccessful) {
+    setMessage("Comment added successfully!")
+    setIsSuccessful(false)
   } 
 
   return (
     <form className="add-comment" onSubmit={handleSubmit} action="/">
       <h3>Add Comment</h3>
       <textarea name="comment-body" id="comment-body" value={comment} onChange={commentChange} placeholder="What do you think?"></textarea>
-      {message}
+      <p>{message}</p>
       <p className="char-count">{comment.length}/{maxChar}</p>
       <button><span>+</span> Add comment</button>
     </form>
