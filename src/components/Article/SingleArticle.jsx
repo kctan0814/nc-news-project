@@ -31,7 +31,7 @@ const SingleArticle = () => {
     return <p className='loading'>Loading article..</p>
   } else {
     return (
-      <body>
+      <>
         <article className="single-article">
           <header>
             <h2>{article.title}</h2>
@@ -41,7 +41,7 @@ const SingleArticle = () => {
             </div>
             <p>By: {article.author}</p>
           </header>
-          <figure style={{backgroundImage: `url("${article.article_img_url}")`}} aria-label="Article Image" />
+          <figure className='article-img' style={{backgroundImage: `url("${article.article_img_url}")`}} aria-label="Article Image" />
           <main>
             {article.body}
           </main>
@@ -51,7 +51,7 @@ const SingleArticle = () => {
           </footer>
         </article>
         <CommentList article_id={article_id} />
-      </body>
+      </>
     )
   }
 

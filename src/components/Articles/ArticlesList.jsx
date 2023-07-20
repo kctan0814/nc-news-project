@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
 import { getArticles } from "../utils/api";
+import { useParams } from "react-router-dom";
+import { UserContext } from '../context/Username'
 
 const ArticlesList = () => {
+  const { topic } = useParams()
+  const { setCurrTopic } = useContext(UserContext)
   const [articles, setArticles] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-
+  setCurrTopic(topic)
+  
   useEffect(() => {
-    getArticles().then(({articles}) => {
+    getArticles(topic).then(({articles}) => {
       setArticles(articles)
       setIsLoading(false);
     })
     .catch((err) => {
       setIsError(true)
     })
-  }, [])
+  }, [topic])
 
   if (isError) {
     return (
@@ -28,7 +33,7 @@ const ArticlesList = () => {
 
   return (
     <section className="articles-list">
-      <h2>Now trending</h2>
+      <h2>{topic ? topic.slice(0,1).toUpperCase()+topic.slice(1) : "Now trending"}</h2>
       {isLoading ? <p className="loading">Loading articles...</p> : articles.map(article => {
         return (
           <ArticleCard 

@@ -2,12 +2,20 @@ import axios from "axios";
 
 const api = axios.create({baseURL: 'https://news-portfolio.onrender.com/api'})
 
-export const getArticles = () => {
-  return api.get('/articles')
+export const getTopics = () => {
+  return api.get('/topics')
     .then(({data}) => {
       return data;
     })
 }
+
+export const getArticles = (topic) => {
+  return api.get(`/articles${topic ? '?topic=' + topic : ''}`)
+    .then(({data}) => {
+      return data;
+    })
+}
+
 
 export const getArticleById = id => {
   return api.get(`/articles/${id}`)

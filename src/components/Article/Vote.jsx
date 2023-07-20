@@ -7,12 +7,14 @@ const Vote = props => {
   const [downvotePress, setDownvotePress] = useState(false)
   const [isError, setIsError] = useState(false)
 
+
   const upvote = e => {
-    if (!upvotePress) {
+      if (!upvotePress) {
       setUpvotePress(true)
       setDownvotePress(false)
       setAddVote(1)
-      patchArticle(article_id, { inc_votes: 1})
+      const inc_votes = downvotePress ? 2 : 1
+      patchArticle(article_id, { inc_votes })
       .then(() => {
         setIsError(false)
       })
@@ -24,6 +26,7 @@ const Vote = props => {
     } else {
       setUpvotePress(false)
       setAddVote(0)
+      
       patchArticle(article_id, { inc_votes: -1})
       .then(() => {
         setIsError(false)
@@ -41,7 +44,8 @@ const Vote = props => {
       setDownvotePress(true)
       setUpvotePress(false)
       setAddVote(-1)
-      patchArticle(article_id, { inc_votes: -1})
+      const inc_votes = upvotePress ? -2 : -1
+      patchArticle(article_id, { inc_votes })
       .then(() => {
         setIsError(false)
       })
@@ -53,7 +57,7 @@ const Vote = props => {
     } else {
       setDownvotePress(false)
       setAddVote(0)
-      patchArticle(article_id, { inc_votes: 1})
+      patchArticle(article_id, { inc_votes: 1 })
       .then(() => {
         setIsError(false)
       })
