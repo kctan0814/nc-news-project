@@ -41,7 +41,7 @@ const SingleArticle = () => {
             </div>
             <p>By: {article.author}</p>
           </header>
-          <figure style={{backgroundImage: `url("${article.article_img_url}")`}} aria-label="Article Image" />
+          <figure className='article-img' style={{backgroundImage: `url("${article.article_img_url}")`}} aria-label="Article Image" />
           <main>
             {article.body}
           </main>

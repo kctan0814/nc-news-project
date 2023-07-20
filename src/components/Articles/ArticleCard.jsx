@@ -19,7 +19,7 @@ const ArticleCard = props => {
           <p className="comment-count">{comment_count} Comments</p>
         </footer>
       </main>
-      <img src={article_img_url} alt="article image" />
+      <figure className='article-img' style={{backgroundImage: `url("${article_img_url}")`}} aria-label="Article Image" />
     </Link>
   )
 }
