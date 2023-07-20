@@ -35,16 +35,16 @@ html {
   padding: 0;
 }
 
+.no-decoration {
+  text-decoration: none;
+  color: black;
+}
+
 .header {
   margin: 0 auto;
   width: fit-content;
   display: grid;
   grid-template: auto auto / auto auto;
-  color: black;
-}
-
-.no-decoration {
-  text-decoration: none;
   color: black;
 }
 
@@ -420,6 +420,12 @@ nav li:last-child p {
   align-self: center;
 }
 
+
+.single-article figure {
+  height: 20rem;
+}
+
+
 .comment-section {
   margin-top: 3rem;
 }
@@ -444,10 +450,55 @@ nav li:last-child p {
   margin: 1rem 0;
 }
 
-@media screen and (max-width: 920px) {
-  .single-article figure {
-    height: 20rem;
-  }
+.add-comment {
+  display: grid;
+  grid-template: repeat(3, auto) / auto auto min-content;
+}
+
+.add-comment h3 {
+  grid-area: 1 / 1 / 2 / 4;
+}
+
+.add-comment textarea {
+  grid-area: 2 / 1 / 3 / 4;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  padding: 1rem;
+  width: 100%;
+  height: 6rem;
+  resize: none;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  overflow: visible;
+}
+
+.add-comment .char-count {
+  display: inline;
+  font-size: 0.8rem;
+  margin: 0;
+  align-self: center;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.add-comment .warning {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible !important;
+}
+
+.add-comment p {
+  margin: 0;
+  align-self: center;
+}
+
+.add-comment button {
+  width: 8rem;
+  padding: 0.7rem;
+  background-color: white;
 }
 
 /* .logo {
