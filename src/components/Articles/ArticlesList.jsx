@@ -13,11 +13,12 @@ const ArticlesList = () => {
   setCurrTopic(topic)
   
   useEffect(() => {
+    setIsLoading(true)
     getArticles(topic).then(({articles}) => {
       setArticles(articles)
       setIsLoading(false);
     })
-    .catch((err) => {
+    .catch(() => {
       setIsError(true)
     })
   }, [topic])
