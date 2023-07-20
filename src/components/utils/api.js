@@ -26,3 +26,10 @@ export const getCommentsById = id => {
 export const patchArticle = (id, body) => {
   return api.patch(`/articles/${id}`, body)
 }
+
+export const postComment = (id, body) => {
+  return api.post(`/articles/${id}/comments`, body)
+  .then(({data}) => {
+    return data
+  })
+}
