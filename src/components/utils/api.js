@@ -10,15 +10,19 @@ export const getArticles = () => {
 }
 
 export const getArticleById = id => {
-  return api.get(`/articles/11${id}`)
+  return api.get(`/articles/${id}`)
     .then(({data}) => {
       return data;
     })
 }
 
 export const getCommentsById = id => {
-  return api.get(`articles/${id}/comment`)
+  return api.get(`/articles/${id}/comments`)
     .then(({data}) => {
       return data;
     })
+}
+
+export const patchArticle = (id, body) => {
+  return api.patch(`/articles/${id}`, body)
 }

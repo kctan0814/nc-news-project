@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCommentsById } from "./utils/api";
+import { getCommentsById } from "../utils/api";
 import CommentCard from "./CommentCard";
 
 const CommentList = props => {
