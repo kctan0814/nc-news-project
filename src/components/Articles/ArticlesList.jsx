@@ -58,6 +58,7 @@ const ArticlesList = () => {
           created_at={new Date(article.created_at).toDateString()}
           title={article.title}
           topic={article.topic}
+          votes={article.votes}
           />
         )
       })}

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const ArticleCard = props => {
-  const {article_id, article_img_url, author, comment_count, created_at, title, topic} = props;
+  const {article_id, article_img_url, author, comment_count, created_at, title, topic, votes} = props;
   return (
     <Link className="no-decoration article-card" to={`/articles/${article_id}`} >
       <main className="article-main">
@@ -16,6 +16,7 @@ const ArticleCard = props => {
           </div>
         </header>
         <footer className="article-footer">
+          <p className='votes'>{votes} Votes</p>
           <p className="comment-count">{comment_count} Comments</p>
         </footer>
       </main>
