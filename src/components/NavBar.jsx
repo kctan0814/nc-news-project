@@ -21,7 +21,7 @@ const NavBar = () => {
       <ul>
         <li className={`${currTopic === undefined && 'current'}`}><Link className='no-decoration' to='/' ><p>Home</p></Link></li>
         {topics.map(topic => {
-          return <li className={`${currTopic === topic && 'current'}`} ><Link className="no-decoration" to={`/${topic}`} ><p>{topic.slice(0,1).toUpperCase()+topic.slice(1)}</p></Link></li>
+          return <li className={`${currTopic === topic && 'current'}`} ><Link className="no-decoration" to={`/topics/${topic}`} ><p>{topic.slice(0,1).toUpperCase()+topic.slice(1)}</p></Link></li>
         })}
       </ul>
     </nav>

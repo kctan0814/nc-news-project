@@ -26,7 +26,7 @@ const SingleArticle = () => {
   }, [])
 
   if (apiError.status) {
-    return <Error status={apiError.status} msg={msg} />
+    return <Error status={apiError.status} msg={`Article ${article_id} not found`} />
   } else if (isLoading) {
     return <p className='loading'>Loading article..</p>
   } else {
