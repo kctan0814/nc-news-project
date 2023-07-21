@@ -6,7 +6,8 @@ const SortBy = props => {
     'Date Posted': 'created_at',
     'Author': 'author',
     'Topic': 'topic',
-    'votes': 'votes'
+    'Votes': 'votes',
+    'Comment Count': 'comment_count'
   }
   const orderList = { 
     Ascending: 'ASC',
