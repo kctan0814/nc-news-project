@@ -9,8 +9,8 @@ export const getTopics = () => {
     })
 }
 
-export const getArticles = (topic) => {
-  const params = { topic }
+export const getArticles = (topic, sort_by, order) => {
+  const params = { topic, sort_by, order }
   return api.get(`/articles`, { params })
     .then(({data}) => {
       return data;
