@@ -29,10 +29,12 @@ const CommentList = props => {
       comments.length === 0 ? <h3>No comments yet...</h3> : comments.map(comment => {
         return <CommentCard
           key={comment.comment_id}
+          comment_id={comment.comment_id}
           author={comment.author}
           body={comment.body}
           created_at={new Date(comment.created_at).toLocaleString()}
           votes={comment.votes}
+          setComments={setComments}
         />;
       })}
     </section>

@@ -457,6 +457,17 @@ nav li:last-child p {
   margin: 1rem 0;
 }
 
+.comment-card footer {
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: end;
+}
+
+.delete-comment {
+  padding: 0.5rem;
+  width: max-content
+}
+
 .add-comment {
   display: grid;
   grid-template: repeat(3, auto) / auto auto min-content;
