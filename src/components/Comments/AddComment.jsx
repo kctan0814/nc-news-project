@@ -9,20 +9,24 @@ const AddComment = props => {
   const [isTooLong, setIsTooLong] = useState(false)
   const [isSuccessful, setIsSuccessful] = useState(false)
   const [isEmpty, setIsEmpty] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [comment, setComment] = useState('')
   const [message, setMessage] = useState("")
   const maxChar = 300;
 
   const handleSubmit = e => {
     e.preventDefault()
+    setIsLoading(true)
     if (isEmpty) {
       setMessage("Can't post an empty comment :(")
       setIsEmpty(true)
+      setIsLoading(false)
       return
     }
     const toSend = {username, body: comment}
     postComment(article_id, toSend)
       .then(({comment}) => { 
+        setIsLoading(false)
         setIsSuccessful(true)
         setComment('')
         setIsEmpty(true)
@@ -32,6 +36,7 @@ const AddComment = props => {
         })
       })
       .catch(() => {
+        setIsLoading(false)
         setIsError(true)
       })
   }
@@ -66,7 +71,7 @@ const AddComment = props => {
       <textarea name="comment-body" id="comment-body" value={comment} onChange={commentChange} placeholder="What do you think?"></textarea>
       <p>{message}</p>
       <p className="char-count">{comment.length}/{maxChar}</p>
-      <button><span>+</span> Add comment</button>
+      <button disabled={isLoading} ><span>+</span> Add comment</button>
     </form>
   )
 }

@@ -18,6 +18,10 @@ html {
   padding: 2rem;
 }
 
+button {
+  font-size: 0.9rem;
+}
+
 .article-img {
   background-size: cover;
   background-repeat: no-repeat;
@@ -489,6 +493,24 @@ nav li:last-child p {
 
 .comment-body {
   margin: 1rem 0;
+}
+
+.comment-card footer {
+  display: grid;
+  grid-template-columns: auto auto min-content;
+  align-items: center;
+}
+
+.comment-card footer .err-msg {
+  font-size: 0.8rem;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.delete-comment {
+  grid-area: 1 / 3 / 2 / 4;
+  padding: 0.5rem;
+  width: max-content
 }
 
 .add-comment {

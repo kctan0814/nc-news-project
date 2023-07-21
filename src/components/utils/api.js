@@ -17,7 +17,6 @@ export const getArticles = (topic, sort_by, order) => {
     })
 }
 
-
 export const getArticleById = id => {
   return api.get(`/articles/${id}`)
     .then(({data}) => {
@@ -41,4 +40,8 @@ export const postComment = (id, body) => {
   .then(({data}) => {
     return data
   })
+}
+
+export const deleteComment = (id) => {
+  return api.delete(`/comments/${id}`)
 }
